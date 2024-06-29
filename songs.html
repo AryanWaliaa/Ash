@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>love</title>
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<style>
+    body {
+        background-color: #1c1c1e; /* Dark gray background similar to Apple Music */
+        color: #ffffff; /* White text for contrast */
+        font-family: Arial, sans-serif; /* Example font */
+        margin: 0;
+        padding: 0;
+    }
+    /* Style for the main content container */
+    .content {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #29292a; /* Slightly lighter gray for content area */
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+        position: relative; /* Ensure relative positioning */
+        z-index: 10; /* Ensure it's above the slideshow */
+    }
+    /* Example heading and paragraph styles */
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+    p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+    }
+    /* Style for the slideshow container */
+    .slideshow-container {
+        position: relative;
+        max-width: 80%; /* Adjust maximum width as needed */
+        max-height: 400px; /* Adjust maximum height as needed */
+        overflow: hidden;
+        margin: 20px auto;
+        background-color: #29292a; /* Match content area background */
+        border-radius: 12px; /* Rounded corners */
+    }
+    .slideshow-container img {
+        width: 400px; /* Fixed width */
+        height: 400px; /* Fixed height */
+        object-fit: cover; /* Cover the container */
+        display: block; /* Remove any potential whitespace */
+        margin: 0 auto; /* Center the image horizontally */
+    }
+    .next {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #ffffff;
+        border: none;
+        cursor: pointer;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 1rem;
+        z-index: 10;
+    }
+    /* Style for the end of page button */
+    .end-button {
+        text-align: center;
+        margin-top: 20px;
+        display: none; /* Initially hidden */
+    }
+</style>
+</head>
+<body>
+<div class="content">
+    <h1>You used to ask me how much I miss you, How pretty you look, well here's what my mountains emoji meant</h1>
+    <p></p>
+</div>
+<div class="slideshow-container">
+    <img class="mySlides" src="1.jpg" style="display: block;">
+    <img class="mySlides" src="2.jpg" style="display: none;">
+    <img class="mySlides" src="3.jpg" style="display: none;">
+    <img class="mySlides" src="4.jpg" style="display: none;">
+    <img class="mySlides" src="5.jpg" style="display: none;">
+    <img class="mySlides" src="6.jpg" style="display: none;">
+    <img class="mySlides" src="7.jpg" style="display: none;">
+    <!-- Next button -->
+    <button class="next" onclick="nextSlide()">Next</button>
+</div>
+<div class="end-button" id="endButton">
+    <button onclick="handleEndButtonClick()">lets go</button>
+</div>
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<!-- Initialize Swiper -->
+<script>
+    var slideIndex = 0; // Initialize slide index
+    function nextSlide() {
+        var slides = document.getElementsByClassName("mySlides");
+        // Hide the current slide
+        slides[slideIndex].style.display = "none";
+        // Increment slideIndex and reset to 0 if it exceeds number of slides
+        slideIndex++;
+        if (slideIndex >= slides.length) {
+            slideIndex = 0;
+            showEndButton(); // Show the end button when reaching the last slide
+        }
+        // Display the next slide
+        slides[slideIndex].style.display = "block";
+    }
+    function showEndButton() {
+        var endButton = document.getElementById("endButton");
+        endButton.style.display = "block";
+    }
+    // Add functionality to open a new tab when "Another Button" is clicked
+  var endButton = document.getElementById('endButton');
+  endButton.addEventListener('click', function() {
+      var newPageUrl = 'lastpage.html'; // Replace with your desired URL
+      window.open(newPageUrl, '_blank');
+  });
+</script>
+</body>
+</html>
+
+
+

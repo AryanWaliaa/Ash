@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Colorful Page with Moving Button</title>
+<style>
+  body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+
+  .centered-container {
+    width: 80%;
+    max-width: 600px; /* Limiting max width for larger screens */
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .content {
+    text-align: center;
+  }
+
+  .button-container {
+    margin-top: 20px;
+    position: relative; /* Ensure absolute positioning inside */
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 18px;
+    margin: 0 10px;
+    cursor: pointer;
+  }
+
+  #noButton.moved {
+    position: absolute;
+    /* Randomize position within button-container */
+    top: calc(50% - 50px);
+    left: calc(50% - 50px);
+  }
+
+  .attention-message {
+    display: none;
+    background-color: rgba(255, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+  }
+
+  .attention-message.show {
+    display: block;
+  }
+
+  .attention-message button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="centered-container">
+  <div class="content">
+    <h1>Do you want to know  what's going on inside my mind right now?</h1>
+    <div class="button-container">
+ 
+      <button id="noButton">Yes</button>
+    </div>
+    <div id="attentionMessage" class="attention-message">
+      <p> finally i get to see ash ke efforts</p>
+      <p>Click "Barobarrrr" to proceed to next page.</p>
+      <button id="okayButton">Barobarrrr</button>
+    </div>
+  </div>
+</div>
+<script>
+  const noButton = document.getElementById('noButton');
+  const attentionMessage = document.getElementById('attentionMessage');
+  let clickCount = 0;
+
+  noButton.addEventListener('click', () => {
+    // Calculate random positions within the button-container
+    const containerWidth = noButton.parentElement.offsetWidth - noButton.offsetWidth;
+    const containerHeight = noButton.parentElement.offsetHeight - noButton.offsetHeight;
+
+    const randomX = Math.floor(Math.random() * containerWidth);
+    const randomY = Math.floor(Math.random() * containerHeight);
+
+    noButton.style.left = `${randomX}px`;
+    noButton.style.top = `${randomY}px`;
+
+    noButton.classList.toggle('moved');
+    clickCount++;
+
+    if (clickCount ===4) {
+      attentionMessage.classList.add('show');
+    }
+  });
+
+  const okayButton = document.getElementById('okayButton');
+  okayButton.addEventListener('click', () => {
+    // Redirect to another page in a new tab
+    window.open('tomato.html', '_blank');
+  });
+</script>
+
+</body>
+</html>
