@@ -115,18 +115,18 @@ And yes, I wasn't able to answer your scenarios, but I will do anything to preve
 
     
    
-function showAlert() {
-    setTimeout(function() {
-        var confirmed = window.confirm("Do you want to proceed to another page?");
-        if (confirmed) {
-            // Redirect to another page
-            window.location.href = 'games.html';
-        } else {
-            // Show the alert again after 20 seconds
-            setTimeout(showAlert, 20000); // 20 seconds
+ function showAlert() {
+            setTimeout(function() {
+                var confirmed = window.confirm("Do you want to proceed to another page?");
+                if (confirmed) {
+                    // Redirect to another page in a new tab
+                    window.open('games.html', '_blank');
+                } else {
+                    // Show the alert again after 20 seconds
+                    setTimeout(showAlert, 20000); // 20 seconds
+                }
+            }, 170000); // 2 minutes
         }
-    }, 170000); // 2 minutes
-}
 
 // Start the process
 showAlert();
